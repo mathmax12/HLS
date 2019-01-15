@@ -1,0 +1,4 @@
+
+1.floating point addation takes more than one cycles.
+2.a=b+c+d+f; floating and double can't use EXPRESSION_BALANCE; integer can.
+-XAPP599 & ug902

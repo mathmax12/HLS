@@ -1,4 +1,15 @@
 
 1.floating point addation takes more than one cycles.
 2.a=b+c+d+f; floating and double can't use EXPRESSION_BALANCE; integer can.
--XAPP599 & ug902
+  -XAPP599 & ug902
+3. ALways use pointer to pass the structure.
+    
+    D_point_or query_or_temp;
+    #pragma HLS ARRAY_PARTITION variable=query_or_temp.x cyclic factor=480 dim=1 
+    D_point_or feature_or_temp;
+    #pragma HLS ARRAY_PARTITION variable=feature_or_temp.x cyclic factor=480 dim=1
+    void dist_calc_or1(D_point_or feature_or, D_point_or query_or){}
+    
+    void dist_calc_or1(feature_or_temp, query_or_temp){}
+    Will read data one byone fist and the partition cannot work in the function "dist_calc_or1".
+    

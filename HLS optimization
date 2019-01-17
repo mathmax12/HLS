@@ -13,3 +13,11 @@
     void dist_calc_or1(feature_or_temp, query_or_temp){}
     Will read data one byone fist and the partition cannot work in the function "dist_calc_or1".
     
+4. "WARNING: [XFORM 203-713] Argument 'index_or_heap0_temp' has read and write operations in process function 'k_max'.
+    WARNING: [XFORM 203-713] All the elements of global array 'index_or_heap0_temp'  should be updated in process function 'k_max', otherwise it may not be synthesized correctly.
+    WARNING: [XFORM 203-713] Reading dataflow channel 'dists_or_heap0_temp.V'  in the middle of dataflow may stall the dataflow pipeline:
+    WARNING: [XFORM 203-713] Argument 'dists_or_heap0_temp.V' has read and write operations in process function 'k_max'.
+    WARNING: [XFORM 203-713] All the elements of global array 'dists_or_heap0_temp.V'  should be updated in process function 'k_max', otherwise it may not be synthesized correctly."
+    
+    It's not wise to update the same variable in different function.
+    The updata operation should be done in the same function.

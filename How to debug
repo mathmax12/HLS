@@ -5,3 +5,8 @@ Tcl-console->report_route_status
 2. reports:
    utilization and clk cycles for each function: _x/report/kernelname.sf|hw_emu|hw.../sys....txt
    _x/report/link/kernel_unit_placed.rpt
+3. The unroll factor doesn't work:
+   There is some information from the vivado_hls.log
+   "WARNING: [XFORM 203-505] Ignored pipeline directive for loop 'dist_calc_or21' (/home/xiaojia.song/SDAccel_Examples_2018_2/getting_started/host/PCAF_FPGA_sub_v2s2sub45_BFS_32_05/src/pcaf_fpga.cpp:172) because its parent loop or function is pipelined.
+   "
+   SO the resason for this issue is the parent loop is pipilined and then the unroll pragma is ignored.

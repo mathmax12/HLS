@@ -21,3 +21,8 @@
     
     It's not wise to update the same variable in different function.
     The updata operation should be done in the same function.
+5. Partially uroll the for loop.
+   a. using #pragma HLS unroll factor = n
+   b. For nested loop for function, we can use:
+       #pragma HLS ALLOCATION instances=fmul limit=32 operation
+   

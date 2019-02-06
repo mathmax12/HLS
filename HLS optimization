@@ -26,3 +26,22 @@
    b. For nested loop for function, we can use:
        #pragma HLS ALLOCATION instances=fmul limit=32 operation
    
+6. A case that cause the burst read doesn't wokr.
+   func_top(){
+      for(){
+          #pragma HLS pipline
+          func_0();
+          func_1();
+      }
+   }
+   
+   func_0(){
+      for(i:n){
+          temp = port[i]
+      }
+   }
+   In this case the pipeline directive will unroll all the for loops in the func_0 and func_1.
+   so for the func_0() case the "temp = port[i]" line is also unrolled.
+   But there is only one physical port from the DDR bank to the "port*".
+   This unroll cause the burst read of "port" cannot work.
+   

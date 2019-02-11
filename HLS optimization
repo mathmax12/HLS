@@ -26,7 +26,8 @@
    b. For nested loop for function, we can use:
        #pragma HLS ALLOCATION instances=fmul limit=32 operation
    
-6. A case that cause the burst read doesn't wokr.
+6. A case that cause the burst read doesn't work.
+   a. don't uroll the for loop, which is used for the reading from DDR.
    func_top(){
       for(){
           #pragma HLS pipline

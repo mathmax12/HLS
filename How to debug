@@ -6,7 +6,22 @@
    report_route_status
    
 2. reports:
-   utilization and clk cycles for each function: _x/report/kernelname.sf|hw_emu|hw.../sys....txt
+   a. vivado_hls.log
+   b. system_estimate_pcaf_fpga.hw_emu.xilinx_vcu1525_dynamic_5_1.xtxt
+      Latency Information (clock cycles)
+      Compute Unit  Kernel Name  Module Name            Start Interval  Best Case  Avg Case  Worst Case
+      ------------  -----------  ---------------------  --------------  ---------  --------  ----------
+      pcaf_fpga_1   pcaf_fpga    read_query_pca         47              47         47        47
+      pcaf_fpga_1   pcaf_fpga    read_query_or          39              39         39        39
+      pcaf_fpga_1   pcaf_fpga    read_feature_pca15614  110             110        110       110
+      pcaf_fpga_1   pcaf_fpga    d_copy_oc2g            21              21         21        21
+      pcaf_fpga_1   pcaf_fpga    pcaf_fpga              440 ~ 19040     439        4539      19039
+   c._x/link/vivado/prj/prj.run/impl_1/runme.log
+      Finally sysmte clock frequency
+   d. _x/link/vivado/prj/prj.run/impl_1/x..rpt
+      VIOLATED
+      
+   c.utilization and clk cycles for each function: _x/report/kernelname.sf|hw_emu|hw.../sys....txt
    _x/report/link/kernel_unit_placed.rpt
    
 3. The unroll factor doesn't work:

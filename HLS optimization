@@ -46,3 +46,10 @@
    But there is only one physical port from the DDR bank to the "port*".
    This unroll cause the burst read of "port" cannot work.
    
+7. The smallest amount of allocatable space for a variable in C is 1 byte.
+  When kernel reading 2 4-bit data from the ddr, it will firstly get the low 4 bit data  and then the upper 4bit data.
+  The tricky part is you store 4 4-bit data(e.g. -2, -3,-4 and -5) onto the FPGA DDR from the host-side.
+  After the 4 reading by the kernel, the kernel will get -2, -1, -3, -1. Among of them the -1 is the sign of -2 and -3.
+  When doing this in the sofware emulation, the kernel will get -2, -3,-4, and -5.
+  FPGA can allocate 4 bit space but CPU cannot and each data from CPU side accupy at lease 8bit.
+  
